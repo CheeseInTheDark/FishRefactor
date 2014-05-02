@@ -1,9 +1,10 @@
+package javambs;
 
-import DisplayMap;
-import FishDisplay;
-import MBSFactory;
-import MBSGUIFrame;
-import NarrowFishDisplay;
+import javambs.DisplayMap;
+import javambs.FishDisplay;
+import javambs.MBSFactory;
+import javambs.MBSGUIFrame;
+import javambs.NarrowFishDisplay;
 
 // AP(r) Computer Science Marine Biology Simulation:
 // The MBSGUI class is copyright(c) 2002 College Entrance

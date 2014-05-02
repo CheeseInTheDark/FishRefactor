@@ -1,8 +1,9 @@
+package javambs;
 
 
-import Debug;
-import Direction;
-import Location;
+import javambs.Debug;
+import javambs.Direction;
+import javambs.Location;
 
 import java.awt.Color;
 

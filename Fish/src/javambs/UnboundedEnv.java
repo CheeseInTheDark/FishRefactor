@@ -1,8 +1,8 @@
+package javambs;
 
-
-import Locatable;
-import Location;
-import SquareEnvironment;
+import javambs.Locatable;
+import javambs.Location;
+import javambs.SquareEnvironment;
 
 import java.util.ArrayList;
 

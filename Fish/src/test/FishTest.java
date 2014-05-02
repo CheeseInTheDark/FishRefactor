@@ -3,15 +3,15 @@ package test;
 import java.awt.Color;
 import java.util.ArrayList;
 
+import javambs.Direction;
+import javambs.Fish;
+import javambs.Location;
+import junit.framework.TestCase;
+
+import static org.mockito.Mockito.*;
 import org.mockito.Matchers;
 
-import BoundedEnv;
-import junit.framework.Assert;
-import junit.framework.TestCase;
-import Environment;
-import Fish;
-import Location;
-import Direction;
+import javambs.Environment;
 
 public class FishTest extends TestCase
 {

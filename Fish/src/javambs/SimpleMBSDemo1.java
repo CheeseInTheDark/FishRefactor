@@ -1,9 +1,10 @@
+package javambs;
 
-import Location;
-import SimpleMBSDisplay;
+import javambs.Location;
+import javambs.SimpleMBSDisplay;
 
 // AP(r) Computer Science Marine Biology Simulation:
-// The SimpleMBSDemo2 class is copyright(c) 2002 College Entrance
+// The SimpleMBSDemo1 class is copyright(c) 2002 College Entrance
 // Examination Board (www.collegeboard.com).
 //
 // This class is free software; you can redistribute it and/or modify
@@ -17,17 +18,18 @@ import SimpleMBSDisplay;
 
 /**
  *  AP&reg; Computer Science Marine Biology Simulation:<br>
- *  The <code>SimpleMBSDemo2</code> class provides a main method that creates
+ *  The <code>SimpleMBSDemo1</code> class provides a main method that creates
  *  a simulation of a number of fish swimming in a bounded environment.
  *  It also creates a simple window in which to view the environment
- *  after each timestep in the simulation.  This version of the MBS demo uses
- *  an object of the <code>Simulation</code> class.
+ *  after each timestep in the simulation. Unlike the full version of
+ *  the simulation program, <code>SimpleMBSDemo1</code> does not use an object
+ *  of the <code>Simulation</code> class.
  *
  *  <p>
  *  This class will NOT be tested on the Advanced Placement exam.
  *
  *  <p>
- *  The <code>SimpleMBSDemo2</code> class is
+ *  The <code>SimpleMBSDemo1</code> class is
  *  copyright&copy; 2002 College Entrance Examination Board
  *  (www.collegeboard.com).
  *
@@ -36,7 +38,7 @@ import SimpleMBSDisplay;
  *  @version 1 July 2002
  **/
 
-public class SimpleMBSDemo2
+public class SimpleMBSDemo1
 {
     // Specify number of rows and columns in environment.
     private static final int ENV_ROWS = 10;      // rows in environment
@@ -61,17 +63,17 @@ public class SimpleMBSDemo2
         Fish f3 = new Fish(env, new Location(5, 8));
 
         // Construct an object that knows how to draw the environment with
-        // a delay.
+        // a delay; display the initial configuration of the environment.
         SimpleMBSDisplay display = new SimpleMBSDisplay(env, DELAY);
-
-        // Construct the simulation object.  It needs to have the environment
-        // and the object that can draw the environment.
-        Simulation sim = new Simulation(env, display);
+        display.showEnv();
 
         // Run the simulation for the specified number of steps.
         for ( int i = 0; i < NUM_STEPS; i++ )
         {
-            sim.step();
+            f1.act();
+            f2.act();
+            f3.act();
+            display.showEnv();
         }
     }
 }

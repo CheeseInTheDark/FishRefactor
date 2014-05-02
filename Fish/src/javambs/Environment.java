@@ -1,8 +1,8 @@
+package javambs;
 
-
-import Direction;
-import Locatable;
-import Location;
+import javambs.Direction;
+import javambs.Locatable;
+import javambs.Location;
 
 import java.util.ArrayList;
 

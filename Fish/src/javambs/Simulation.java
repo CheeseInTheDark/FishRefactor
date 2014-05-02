@@ -1,7 +1,8 @@
+package javambs;
 
-import Debug;
-import EnvDisplay;
-import Locatable;
+import javambs.Debug;
+import javambs.EnvDisplay;
+import javambs.Locatable;
 
 // AP(r) Computer Science Marine Biology Simulation:
 // The Simulation class is copyright(c) 2002 College Entrance

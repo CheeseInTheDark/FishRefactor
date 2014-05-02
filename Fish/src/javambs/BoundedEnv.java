@@ -1,7 +1,8 @@
+package javambs;
 
-import Locatable;
-import Location;
-import SquareEnvironment;
+import javambs.Locatable;
+import javambs.Location;
+import javambs.SquareEnvironment;
 
 // AP(r) Computer Science Marine Biology Simulation:
 // The BoundedEnv class is copyright(c) 2002 College Entrance

@@ -1,11 +1,6 @@
+package javambs;
 
-
-import Debug;
-import Direction;
-import Locatable;
-import Location;
-import RandNumGenerator;
-
+import javambs.*;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Random;
