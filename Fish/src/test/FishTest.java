@@ -1,32 +1,40 @@
 package test;
 
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.when;
+
 import java.awt.Color;
 import java.util.ArrayList;
 
 import javambs.Direction;
+import javambs.Environment;
 import javambs.Fish;
 import javambs.Location;
 import junit.framework.TestCase;
 
-import static org.mockito.Mockito.*;
 import org.mockito.Matchers;
-
-import javambs.Environment;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 public class FishTest extends TestCase
 {
+    @Mock
     private Environment environment;
+    
+    @Mock
     private Location location;
-    private Fish fish;
+    
+    @Mock
     private Color color;
+    
+    @Mock
     private Direction direction;
+    
+    private Fish fish;
     
     public void setUp()
     {
-        environment = (Environment) org.mockito.Mockito.mock(Environment.class);
-        location = (Location) org.mockito.Mockito.mock(Location.class);
-        color = (Color) org.mockito.Mockito.mock(Color.class);
-        direction = (Direction) org.mockito.Mockito.mock(Direction.class);
+        MockitoAnnotations.initMocks(this);
         fish = new Fish(environment, location, direction, color);
     }
     
@@ -47,10 +55,10 @@ public class FishTest extends TestCase
     
     public void testFishKnowsIfItIsInTheEnvironment()
     {
-        org.mockito.Mockito.when(environment.objectAt(location)).thenReturn(fish);
+        when(environment.objectAt(location)).thenReturn(fish);
         assertTrue(fish.isInEnv());
         
-        org.mockito.Mockito.when(environment.objectAt(location)).thenReturn(null);
+        when(environment.objectAt(location)).thenReturn(null);
         assertFalse(fish.isInEnv());
     }
     
@@ -58,8 +66,8 @@ public class FishTest extends TestCase
     {
         int fishId = fish.id();
         
-        org.mockito.Mockito.when(location.toString()).thenReturn("(0, 0)");
-        org.mockito.Mockito.when(direction.toString()).thenReturn("NORTH");
+        when(location.toString()).thenReturn("(0, 0)");
+        when(direction.toString()).thenReturn("NORTH");
         
         String description = fishId + "(0, 0)NORTH";
         assertEquals(fish.toString(), description);
@@ -83,6 +91,11 @@ public class FishTest extends TestCase
         assertFalse(new Location(0, 0).compareTo(fish.location()) == 0);
     }
     
+    public void testFishDoesNotReverseDirections()
+    {
+        mockMoveableEnvironment();
+    }
+    
     public void testFishDoesNotMoveIfSpaceNotAvailable()
     {
         mockNonMoveableEnvironment();
@@ -95,14 +108,14 @@ public class FishTest extends TestCase
     private void mockMoveableEnvironment()
     {
         mockEnvironment();
-        org.mockito.Mockito.when(new Boolean(environment.isEmpty((Location) Matchers.any(Location.class)))).thenReturn(Boolean.TRUE);
+        when(new Boolean(environment.isEmpty((Location) any(Location.class)))).thenReturn(Boolean.TRUE);
      
     }
     
     private void mockNonMoveableEnvironment()
     {
         mockEnvironment();
-        org.mockito.Mockito.when(new Boolean(environment.isEmpty((Location) Matchers.any(Location.class)))).thenReturn(Boolean.FALSE);
+        when(new Boolean(environment.isEmpty((Location) Matchers.any(Location.class)))).thenReturn(Boolean.FALSE);
     }
     
     private void mockEnvironment()
@@ -112,10 +125,10 @@ public class FishTest extends TestCase
         ArrayList neighbors = new ArrayList();
         neighbors.add(new Location(1, 0));
         neighbors.add(new Location(0, 1));
-        org.mockito.Mockito.when(environment.objectAt(location)).thenReturn(fish);
-        org.mockito.Mockito.when(environment.neighborsOf(location)).thenReturn(neighbors);
+        when(environment.objectAt(location)).thenReturn(fish);
+        when(environment.neighborsOf(location)).thenReturn(neighbors);
         
-        org.mockito.Mockito.when(environment.getDirection(location, new Location(0, 1))).thenReturn(Direction.SOUTH);
-        org.mockito.Mockito.when(environment.getNeighbor(location, Direction.NORTH)).thenReturn(new Location(0, -1));   
+        when(environment.getDirection(location, new Location(0, 1))).thenReturn(Direction.SOUTH);
+        when(environment.getNeighbor(location, Direction.NORTH)).thenReturn(new Location(0, -1));   
     }
 }
