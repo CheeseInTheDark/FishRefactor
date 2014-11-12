@@ -2,6 +2,8 @@ package test;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.when;
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.assertThat;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -36,6 +38,13 @@ public class FishTest extends TestCase
     {
         MockitoAnnotations.initMocks(this);
         fish = new Fish(environment, location, direction, color);
+    }
+    
+    public void testFishCanBeConstructedWithRandomColor()
+    {
+        fish = new Fish(environment, location, direction);
+        
+        assertThat(fish, is(notNullValue()));
     }
     
     public void testFishHasLocation()
@@ -94,6 +103,10 @@ public class FishTest extends TestCase
     public void testFishDoesNotReverseDirections()
     {
         mockMoveableEnvironment();
+        
+        fish.act();
+        
+        assertFalse(fish.direction().equals(Direction.NORTH));
     }
     
     public void testFishDoesNotMoveIfSpaceNotAvailable()
@@ -108,14 +121,14 @@ public class FishTest extends TestCase
     private void mockMoveableEnvironment()
     {
         mockEnvironment();
-        when(new Boolean(environment.isEmpty((Location) any(Location.class)))).thenReturn(Boolean.TRUE);
+        when(environment.isEmpty((Location) any(Location.class))).thenReturn(Boolean.TRUE);
      
     }
     
     private void mockNonMoveableEnvironment()
     {
         mockEnvironment();
-        when(new Boolean(environment.isEmpty((Location) Matchers.any(Location.class)))).thenReturn(Boolean.FALSE);
+        when(environment.isEmpty((Location) Matchers.any(Location.class))).thenReturn(Boolean.FALSE);
     }
     
     private void mockEnvironment()
